@@ -27,66 +27,6 @@ ThemeData customDarkTheme = ThemeData(
   ),
 );
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: customLightTheme,
-      darkTheme: customDarkTheme,
-      home: const MyHomePage(title: 'Flutter 3.38 Demo'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  Student student = Student("Shivam", 33);
-
-  @override
-  void initState() {
-    super.initState();
-
-    Student student2 = .clone(student);
-    Student student3= .copy();
-    print(student2.name);
-    print(student3.name);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            headlineWidget(),
-            Padding(padding: EdgeInsets.all(16)),
-            paragraphWidget(),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class Student {
   Student(this.name, this.age);
@@ -102,15 +42,87 @@ class Student {
     Student newStudent = Student(student.name, student.age);
     return newStudent;
   }
-
+}
+void main() {
+  runApp(const MyApp());
 }
 
-@Preview(name: "ArticleItem", group: "Group 1", brightness: Brightness.light)
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      darkTheme: customDarkTheme,
+      theme: customLightTheme,
+      home: const MyHomePage(title: 'Flutter 3.38 Demo'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    Student student1=.copy();
+    Student student2=.clone(student1);
+
+    Student student3=.new("Shivam", 30);
+
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.red,
+
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: .center,
+            crossAxisAlignment: .start,
+            children: [
+              headlineWidget(),
+              Padding(padding:.all(16)),
+              paragraphWidget(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+@Preview(name: "ArticleItem1", group: "Page2")
 Widget headlineWidget() {
   return Column(
     children: [
       Text(
-        "Heading",
+        "Heading 2",
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
       Padding(padding: EdgeInsets.all(8)),
@@ -122,13 +134,9 @@ Widget headlineWidget() {
   );
 }
 
-@Preview(
-  name: "List Item 1",
-  group: "Group 2",
-  brightness: Brightness.dark,
-  theme: myPreviewTheme,
-)
-@Preview(name: "List Item 2", group: "Group 2", brightness: Brightness.light)
+@Preview(name: "Paragraph1", brightness: Brightness.dark, group: "Page1"
+    ,theme: getTheme)
+@Preview(name: "Paragraph2", brightness: Brightness.light, group: "Page1")
 Widget paragraphWidget() {
   return Builder(
     builder: (context) {
@@ -159,9 +167,9 @@ Widget paragraphWidget() {
   );
 }
 
-PreviewThemeData myPreviewTheme() {
+PreviewThemeData getTheme(){
   return PreviewThemeData(
-    materialLight: customLightTheme,
     materialDark: customDarkTheme,
+    materialLight: customLightTheme
   );
 }
