@@ -1,6 +1,9 @@
 # Flutter 3.38 Demo
 
-This project targets Flutter 3.38. Below are a few practical developer notes and tips for using three useful features you may want while developing UI: Widget Preview, a concise (cascade) shorthand for object configuration, and Hot Reload for Flutter Web.
+This project targets Flutter 3.38 features demo. 
+- Widget Preview, 
+- Dot shorthand
+- Hot Reload for Flutter Web.
 
 1) Widget Preview
 
